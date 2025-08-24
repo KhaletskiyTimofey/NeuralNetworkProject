@@ -81,8 +81,9 @@ class LinearLayer:
         if self.is_need_cal_activ_deriv:
             delta *= self.activation_func.calc_deriv()
 
-        weights_grad = self.input_data.T @ delta / batches_count
-        biases_grad = np.sum(delta, axis=0) / batches_count
+        l2_lambda = 0.001
+        weights_grad = self.input_data.T @ delta + l2_lambda * self.weights
+        biases_grad = np.sum(delta, axis=0)
 
         self.weights -= weights_grad * self.learning_rate
         self.biases -= biases_grad * self.learning_rate

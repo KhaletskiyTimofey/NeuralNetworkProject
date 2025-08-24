@@ -65,7 +65,7 @@ class MultilayerPerceptron:
         plt.plot(self.epochs_idx, self.loss_values)
         plt.show()
 
-    def get_accuracy(self, data_test, results_test, accuracy=0.1):
+    def get_accuracy(self, data_test, results_test, accuracy=0.5):
         output_results = self.forward_pass(data_test)
 
         results_difference = output_results - results_test

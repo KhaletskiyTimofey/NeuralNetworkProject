@@ -20,7 +20,7 @@ class Sigmoid(ActivFunc):
         self.result = None
 
     def calc(self, data):
-        self.result = 1 / (1 + np.exp(-data))
+        self.result = np.where(data >= 0, 1 / (1 + np.exp(-data)), np.exp(data) / (1 + np.exp(data)))
         return self.result
 
     def calc_deriv(self):
